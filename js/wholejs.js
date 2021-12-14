@@ -82,8 +82,8 @@ function skeyvalidity() {
 
         var binaryform = dectobin(evalresult); ///converting to binary
         var inconsider = binaryform.slice(-i); ///considering first i bits
-        var tmpinconsider = binaryform.slice(-i, -k); ///we need to consider the next i to k bits in future when the structure grows
-        var noconsider = binaryform.slice(-k, -max_bit_size-1); ///as i can't be greater than k so the bits after k will never be considered
+        var tmpinconsider = binaryform.slice(-k, -i); ///we need to consider the next i to k bits in future when the structure grows
+        var noconsider = binaryform.slice(-max_bit_size-1, -k); ///as i can't be greater than k so the bits after k will never be considered
         ///console.log(inconsider+" "+notinconsider);
         document.getElementById("inconsider").innerHTML = inconsider;
         document.getElementById("tmpinconsider").innerHTML = tmpinconsider;
@@ -577,8 +577,8 @@ function increaseIval(val, mainval) {
 function insertKey(val, mainval) {
     ///console.log("cell number "+bintodec(ipart));
     var binaryform = dectobin(val);
-    var ipart = binaryform.slice(0, i);
-    var jpart = binaryform.slice(i, k);
+    var ipart = binaryform.slice(-i);
+    var jpart = binaryform.slice(-k, -i);
 
     var iarr_cellind = bintodec(ipart);
     var jarr_cellind = map[iarr_cellind];
@@ -593,7 +593,7 @@ function insertKey(val, mainval) {
         initCanvas(initDrawingBoard);
     } else if (keys_in_that_cell == bucketsize) {
         var mybinform = dectobin(val);
-        var mykbits = mybinform.slice(0, k);
+        var mykbits = mybinform.slice(-k);
 
         var is_all_same = true;
         for (var rot = 0; rot < bucketsize; rot++) {
