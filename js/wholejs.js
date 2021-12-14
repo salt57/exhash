@@ -598,7 +598,7 @@ function insertKey(val, mainval) {
         var is_all_same = true;
         for (var rot = 0; rot < bucketsize; rot++) {
             var tmpbinform = dectobin(search_keys[jarr_cellind][rot]);
-            var firstkbits = tmpbinform.slice(0, k);
+            var firstkbits = tmpbinform.slice(-k);
             ///console.log("<<"+mykbits+"|"+firstkbits+">>")
             if (mykbits != firstkbits) {
                 is_all_same = false;
