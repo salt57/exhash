@@ -81,9 +81,9 @@ function skeyvalidity() {
         }
 
         var binaryform = dectobin(evalresult); ///converting to binary
-        var inconsider = binaryform.slice(0, i); ///considering first i bits
-        var tmpinconsider = binaryform.slice(i, k); ///we need to consider the next i to k bits in future when the structure grows
-        var noconsider = binaryform.slice(k, max_bit_size); ///as i can't be greater than k so the bits after k will never be considered
+        var inconsider = binaryform.slice(-i); ///considering first i bits
+        var tmpinconsider = binaryform.slice(-i, -k); ///we need to consider the next i to k bits in future when the structure grows
+        var noconsider = binaryform.slice(-k, -max_bit_size-1); ///as i can't be greater than k so the bits after k will never be considered
         ///console.log(inconsider+" "+notinconsider);
         document.getElementById("inconsider").innerHTML = inconsider;
         document.getElementById("tmpinconsider").innerHTML = tmpinconsider;
